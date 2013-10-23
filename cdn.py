@@ -8,7 +8,10 @@
 
 import sys
 import re
+import time
 
+stamp = int(time.time())
+stamp = str(stamp)
 
 IMG_MAP = {
     #! replace all img
@@ -33,7 +36,11 @@ def replaceImg(fname, source):
 
         if match and (source in line):
             print match.group(1)
-            tplStr = re.sub('(../)+common/img/' , CDN_PATH , line)
+            tplStr = re.sub('(\.\.\/)+common/img/' , CDN_PATH , line)
+
+            if stamp: 
+                tplStr = re.sub(r'\.(jpg|gif|png)', r'.\g<1>?v=' + stamp, tplStr)
+
             lines[idx] = tplStr
 
 
