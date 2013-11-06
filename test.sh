@@ -1,3 +1,3 @@
 #!bin/sh
 
-find ~/pan/fengchao/css/common -type f -name '*.css' | xargs python cdn.py
+    python cdn.py ~/pan/fengchao/css/common/ ~/pan/fengchao/css http://static.baidu.com
